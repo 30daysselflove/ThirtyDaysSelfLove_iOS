@@ -131,11 +131,13 @@
     
     NSArray *textFields = @[self.emailField, self.passwordField, self.usernameField];
     for (id object in textFields) {
-        NSArray * invalidMessages = [object validate];
+        NSArray *invalidMessages = [object validate];
         if([invalidMessages count])
         {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Not yet..." message:[invalidMessages objectAtIndex:0] delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
-            [alert show];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Not yet..." message:[invalidMessages objectAtIndex:0] preferredStyle:UIAlertControllerStyleAlert];
+            
+            [self presentViewController:alert animated:YES completion:nil];
+            
             return;
         }
     }
@@ -153,8 +155,11 @@
     CurrentUserModel * user = [CurrentUserModel sharedModel];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"error" object:user];
     NSString * message = (NSString*)notification.userInfo;
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Woops..." message:message delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [alert show];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Woops" message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {}];
+    [alert addAction:defaultAction];
+    [self presentViewController:alert animated:YES completion:nil];
     self.registerButton.enabled = true;
 }
 -(void)_onLogin:(NSNotification*)notification
@@ -175,7 +180,7 @@
     return YES;
 }
 
--(IBAction)loginWithFacebook:(id)sender
+/*-(IBAction)loginWithFacebook:(id)sender
 {
     
     // If the session state is any of the two "open" states when the button is clicked
@@ -216,6 +221,6 @@
              [appDelegate sessionStateChanged:session state:state error:error];
          }];
     }
-}
+}*/
 
 @end

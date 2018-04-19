@@ -99,7 +99,7 @@
     self.loginWithFacebookButton.enabled = true;
 }
 
--(IBAction)loginWithFacebook:(id)sender
+/*-(IBAction)loginWithFacebook:(id)sender
 {
     // If the session state is any of the two "open" states when the button is clicked
     if (FBSession.activeSession.state == FBSessionStateOpen
@@ -129,7 +129,7 @@
              [appDelegate sessionStateChanged:session state:state error:error];
          }];
     }
-}
+}*/
 
 
 @end

@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "Model.h"
 #import "LoginViewController.h"
-#import <FacebookSDK/FacebookSDK.h>
+//#import <FacebookSDK/FacebookSDK.h>
 #import "DefaultSHKConfigurator.h"
 #import "MySHKCofig.h"
 #import "SHKConfiguration.h"
@@ -183,8 +183,8 @@ static SCVideoPlayerView* bgVideoPlayer = nil;
          annotation:(id)annotation {
     
     NSLog(@"url scheme: %@",url.scheme);
-    if([url.scheme isEqualToString:@"thirtydays"])
-    {
+    //if([url.scheme isEqualToString:@"thirtydays"])
+    //{
         NSUInteger followIndex = [url.pathComponents indexOfObject:@"follow"];
         if(followIndex != NSNotFound)
         {
@@ -211,21 +211,21 @@ static SCVideoPlayerView* bgVideoPlayer = nil;
             
         }
         return YES;
-    }
-    else
-    {
+    //}
+    //else
+    //{
         // Note this handler block should be the exact same as the handler passed to any open calls.
-        [FBSession.activeSession setStateChangeHandler:
-         ^(FBSession *session, FBSessionState state, NSError *error) {
+     //   [FBSession.activeSession setStateChangeHandler:
+    //     ^(FBSession *session, FBSessionState state, NSError *error) {
              
              // Retrieve the app delegate
-             AppDelegate* appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+       //      AppDelegate* appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
              // Call the app delegate's sessionStateChanged:state:error method to handle session state changes
-             [appDelegate sessionStateChanged:session state:state error:error];
-         }];
+      //       [appDelegate sessionStateChanged:session state:state error:error];
+     //    }];
         // attempt to extract a token from the url
-        return [FBAppCall handleOpenURL:url sourceApplication:sourceApplication];
-    }
+    //    return [FBAppCall handleOpenURL:url sourceApplication:sourceApplication];
+    //}
     
 }
 
@@ -238,7 +238,7 @@ static SCVideoPlayerView* bgVideoPlayer = nil;
     [self.window.rootViewController presentViewController:vc animated:true completion:nil];
 
 }
-
+/*
 // This method will handle ALL the session state changes in the app
 - (void)sessionStateChanged:(FBSession *)session state:(FBSessionState) state error:(NSError *)error
 {
@@ -298,7 +298,7 @@ static SCVideoPlayerView* bgVideoPlayer = nil;
         // Show the user the logged-out UI
         [self userLoggedOut];
     }
-}
+}*/
 
 -(void)userLoggedOut
 {

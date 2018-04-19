@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <FacebookSDK/FacebookSDK.h>
+//#import <FacebookSDK/FacebookSDK.h>
 
 @class SCVideoPlayerView;
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
@@ -21,7 +21,7 @@
 +(SCVideoPlayerView*)bgVideoPlayer;
 
 -(void)displayVideo:(NSString*)videoID;
-- (void)sessionStateChanged:(FBSession *)session state:(FBSessionState) state error:(NSError *)error;
+//- (void)sessionStateChanged:(FBSession *)session state:(FBSessionState) state error:(NSError *)error;
 
 @property (strong, nonatomic) UIWindow *window;
 
